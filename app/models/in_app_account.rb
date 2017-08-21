@@ -1,0 +1,2 @@
+class InAppAccount < ApplicationRecord
+end
