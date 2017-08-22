@@ -10,20 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821213946) do
+ActiveRecord::Schema.define(version: 20170822212528) do
 
   create_table "bank_accounts", force: :cascade do |t|
     t.string "name"
     t.string "type_of_account"
-    t.integer "total_money"
+    t.integer "total_money", default: 0
+    t.integer "in_app_account_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
   end
 
   create_table "in_app_accounts", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "amount"
+    t.integer "amount", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,17 +32,9 @@ ActiveRecord::Schema.define(version: 20170821213946) do
   create_table "investments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "stock_id"
-    t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "money_transfer_services", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "friend_id"
-    t.integer "amount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "quantity"
   end
 
   create_table "stocks", force: :cascade do |t|
@@ -56,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170821213946) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "username"
+    t.string "password_digest"
     t.datetime "dob"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

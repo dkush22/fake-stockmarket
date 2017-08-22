@@ -1,0 +1,13 @@
+<%= form_for @bankaccount do |f| %>
+<%= f.label :name %>
+<%= f.text_area :name %>
+<%= f.label :type_of_account %>
+<%= f.text_area :type_of_account %>
+<%= f.label :total_money %>
+<%= f.text_area :total_money %>
+<%= f.label :user_id %>
+<%= f.text_area :user_id %>
+<%= f.label :in_app_account_id %>
+<%= f.text_area :in_app_account_id %>
+<%= f.submit %>
+<% end %>

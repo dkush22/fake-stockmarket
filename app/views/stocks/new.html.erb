@@ -1,0 +1,11 @@
+<%= form_for @stock do |f| %>
+<%= f.label :name %>
+<%= f.text_area :name %>
+<%= f.label :ticker %>
+<%= f.text_area :ticker %>
+<%= f.label :market_cap %>
+<%= f.text_area :market_cap %>
+<%= f.label :stock_price %>
+<%= f.text_area :stock_price %>
+<%= f.submit %>
+<% end %>

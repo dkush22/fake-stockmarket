@@ -1,2 +1,0 @@
-class MoneyTransferService < ApplicationRecord
-end

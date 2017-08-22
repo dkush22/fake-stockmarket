@@ -1,0 +1,20 @@
+<h1>Name:</h1>
+<h3><%=@user.name%></h3>
+<h1>Username:</h1>
+<h3><%=@user.username%></h3>
+<h1>Date of Birth:</h1>
+<h3><%=@user.dob.strftime("%B %d, %Y")%></h3>
+<h1>In App Money:</h1>
+<h3><%=@user.in_app_account.amount%></h3>
+<% if @user.bank_accounts.any? %>
+<h1>Available Money From Bank Accounts</h1>
+<%acct = @user.bank_accounts.map do |bankaccount| %>
+  <%bankaccount.total_money%>
+  <%end.inject(:+)%>
+  <h3><%= acct %></h3>
+  <%= link_to "View all Bank Accounts", bank_accounts_path%>
+<% else %>
+<%= link_to "Add a Bank Account", new_bank_account_path %><br><p></p>
+<% end %>
+
+<%= link_to "Log Out", logout_path, method: 'post', id: "Log Out" %>
