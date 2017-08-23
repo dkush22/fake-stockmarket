@@ -27,6 +27,10 @@ def investment
   @user = User.find(params[:id])
 end
 
+def bankaccount
+  @user = User.find(params[:id])
+end
+
 
 def edit
   @user = User.find(params[:id])

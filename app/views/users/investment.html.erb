@@ -1,5 +1,12 @@
+<% if @user.investments.any? %>
 <%@user.investments.map do |investment| %>
 <h1> <%=pluralize(investment.quantity, 'Share')%> of 
  <%= investment.stock.name%> at a price of 
- $<%= investment.stock.stock_price%><br></h1>
+ $<%= investment.stock.stock_price%> on <%= investment.created_at.strftime("%B %d, %Y") %> at <%= investment.created_at.strftime("%I:%M%p") %></h1>
+ <%end%>
+<%else%>
+<h2> You have not made any investments yet. </h2>
  <% end %>
+
+<%=link_to "Make an Investment", new_investment_path%><br><p></p>
+<%=link_to "Return to Home Page", user_path(current_user)%>

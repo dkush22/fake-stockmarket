@@ -10,9 +10,15 @@ def new
 end
 
 def create
-  @investment = Investment.create(user_id: current_user.id, stock_id: params[:investment][:stock_id], quantity: params[:investment][:quantity])
+  @investment = Investment.new(user_id: current_user.id, stock_id: params[:investment][:stock_id], quantity: params[:investment][:quantity])
+  if @investment.valid?
+  	@investment.save
   @investment.make_investment(params[:investment][:quantity])
   redirect_to user_path(current_user)
+else flash[:message] = "You don't sufficient funds!"
+render 'new'
+
+end
 end
 
 

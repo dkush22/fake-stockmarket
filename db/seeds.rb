@@ -1,7 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'csv'
+
+
+
+stocks_path = '/Users/flatironschool/Development/Two-Module/rails/fake-stockmarket/db/csv_files/stocks.csv'
+
+CSV.foreach(stocks_path) do |row|
+	Stock.create(name: row[1], ticker: row[0], market_cap: 1000000, stock_price: row[2].to_i.round)
+end

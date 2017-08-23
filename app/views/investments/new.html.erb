@@ -1,3 +1,8 @@
+<% if !flash.empty? %>
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+  <%end%>
+<% end %><br>
 <%= form_for @investment do |f| %>
 <%= f.label :stock_id %>
 <%= f.collection_select :stock_id, Stock.all, :id, :ticker %>
@@ -5,3 +10,6 @@
 <%= f.text_field :quantity %>
 <%= f.submit %>
 <%end %>
+<br>
+<%=link_to "Return to Home Page", user_path(current_user)%>
+

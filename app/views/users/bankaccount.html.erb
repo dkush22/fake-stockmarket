@@ -1,0 +1,7 @@
+<%@user.bank_accounts.map do |bankaccount| %>
+<h1><%=bankaccount.name%>
+<%=bankaccount.type_of_account%>
+$<%=bankaccount.total_money%>.00<br></h1>
+ <% end %>
+
+ <%=link_to "Return to Home Page", user_path(current_user)%>
