@@ -21,8 +21,9 @@
   <%investment.quantity * investment.stock.stock_price%>
   <%end.inject(:+)%>
   <h3>$<%=stock%></h3>
-<%= link_to "View all stocks", stocks_path%><br><br>
-<%= link_to "Purchase a stock", new_investment_path%><br><br><br><br>
+<%= link_to "View Your Stock Purchases", user_investment_path%><br><br>
+<%= link_to "View All Stocks", stocks_path%><br><br>
+<%= link_to "Purchase a Stock", new_investment_path%><br><br><br><br>
 <br><br>
 
 <%= link_to "Log Out", logout_path, method: 'post', id: "Log Out" %>

@@ -1,6 +1,10 @@
 class InvestmentsController < ApplicationController
   before_action :require_logged_in
 
+def index
+	@investments = Investment.all
+end
+
 def new
   @investment = Investment.new
 end

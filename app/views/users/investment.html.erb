@@ -1,0 +1,5 @@
+<%@user.investments.map do |investment| %>
+<h1> <%=pluralize(investment.quantity, 'Share')%> of 
+ <%= investment.stock.name%> at a price of 
+ $<%= investment.stock.stock_price%><br></h1>
+ <% end %>

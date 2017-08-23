@@ -7,5 +7,6 @@ Rails.application.routes.draw do
  post '/logout' => 'sessions#destroy'
  get '/in_app_accounts/:id/transfer', to: 'in_app_accounts#transfer', as: 'transfer'
  post '/in_app_accounts/:id', to: 'in_app_accounts#newtransfer'
+ get 'users/:id/investments', to: 'users#investment', as: 'user_investment'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
