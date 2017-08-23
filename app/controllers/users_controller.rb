@@ -17,6 +17,7 @@ def create
   @user.in_app_account = InAppAccount.new(user_id: params[:id], amount: 0)
   if @user.valid?
     @user.save
+    session[:user_id] = @user.id
     redirect_to user_path(@user)
   else render 'new'
   end
