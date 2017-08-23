@@ -5,18 +5,22 @@
 <h1>Date of Birth:</h1>
 <h3><%=@user.dob.strftime("%B %d, %Y")%></h3>
 <h1>In App Money:</h1>
-<h3><%=@user.in_app_account.amount%></h3>
+<h3>$<%=@user.in_app_account.amount%></h3>
 <%= link_to "Transfer money to your in-app-account", transfer_path(current_user.id)%>
 <br><br>
 <h1>Available Money From Bank Accounts</h1>
 <%acct = @user.bank_accounts.map do |bankaccount| %>
   <%bankaccount.total_money%>
   <%end.inject(:+)%>
-  <h3><%= acct %></h3>
+  <h3>$<%= acct %></h3>
   <%= link_to "View all Bank Accounts", bank_accounts_path%>
 <br><br>
 <%= link_to "Add a Bank Account", new_bank_account_path %><br><br>
-<h1>Stocks:</h1>
+<h1>Total Stock Invesments:</h1>
+<%stock = @user.investments.map do |investment| %>
+  <%investment.quantity * investment.stock.stock_price%>
+  <%end.inject(:+)%>
+  <h3>$<%=stock%></h3>
 <%= link_to "View all stocks", stocks_path%><br><br>
 <%= link_to "Purchase a stock", new_investment_path%><br><br><br><br>
 <br><br>

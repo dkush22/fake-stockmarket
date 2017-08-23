@@ -1,6 +1,4 @@
 <% @stocks.each do |stock|%>
-<h1><%= stock.name %></h1>
-<h1><%= stock.ticker %></h1>
-<h1><%= stock.market_cap %></h1>
-<h1><%= stock.stock_price %></h1>
+<h2><%= stock.name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=link_to stock.ticker, stock_path(stock) %></h2>
+
 <% end %>
