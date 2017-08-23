@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many  :investments
   has_secure_password
 
-  def move_money_to_in_app_account(transfer_amount)
+  def move_money_to_in_app_account(transfer_amount, bank_name)
 
     first_bank_account = self.bank_accounts.first
     transfer_amount = transfer_amount.to_i

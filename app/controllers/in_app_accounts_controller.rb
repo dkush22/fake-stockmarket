@@ -28,9 +28,10 @@ class InAppAccountsController < ApplicationController
   end
 
   def newtransfer
+    @bankaccounts = BankAccount.all
     @inappaccount = InAppAccount.find(params[:id])
-    current_user.move_money_to_in_app_account(transfer["amount"])
-    redirect_to users_path
+    current_user.move_money_to_in_app_account(params["transfer"]["amount"].to_i)
+    redirect_to user_path(current_user)
   end
 
   def destroy

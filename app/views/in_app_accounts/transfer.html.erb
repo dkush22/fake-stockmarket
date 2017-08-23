@@ -3,8 +3,10 @@
 <label>Transfer Amount: </label>
 <input type="text" id="transfer_amount" name="[transfer][amount]">
 <label>Transfer From:</label>
-<input type="text" id="bank_account" name="[transfer][bank]">
-
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<%select_tag 'bank_accounts_id[]', options_for_select(BankAccount.map do |acct| %>
+  <%= acct.where(user_id == current_user.id))%>
+  <%end%>
+<br>
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 <input type="submit" value="Submit Post">
 <% end %>
