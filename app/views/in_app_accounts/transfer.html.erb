@@ -1,5 +1,10 @@
-<%= form_for @inappaccount do |f| %>
-<%= f.label :amount %>:<br>
-<%= f.text_field :amount %><br>
-<%= f.submit %>
+<%= form_tag transfer_path do %>
+<input type="hidden" name="_method" value="patch" />
+<label>Transfer Amount: </label>
+<input type="text" id="transfer_amount" name="[transfer][amount]">
+<label>Transfer From:</label>
+<input type="text" id="bank_account" name="[transfer][bank]">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<input type="submit" value="Submit Post">
 <% end %>

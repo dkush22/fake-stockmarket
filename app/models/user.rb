@@ -8,6 +8,7 @@ class User < ApplicationRecord
   def move_money_to_in_app_account(transfer_amount)
 
     first_bank_account = self.bank_accounts.first
+    transfer_amount = transfer_amount.to_i
     first_bank_account.total_money -= transfer_amount
     first_bank_account.save
     self.in_app_account.amount += transfer_amount
