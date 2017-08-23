@@ -1,4 +1,5 @@
 class InvestmentsController < ApplicationController
+  before_action :require_logged_in
 
 def new
   @investment = Investment.new

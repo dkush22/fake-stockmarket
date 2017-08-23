@@ -1,3 +1,13 @@
+<h1>Welcome, <%=current_user.name%>! Below are your associated bank account(s): </h1>
 <% @bankaccounts.each do |bankaccount|%>
-<h1><%= bankaccount.name %> <%= bankaccount.type_of_account %> <%= bankaccount.total_money %></h1>
+  <p>Name: <%= bankaccount.name %><br>
+  Account Type: <%= bankaccount.type_of_account %><br>
+  Total Money in Account: $<%= bankaccount.total_money %></p>
+<%= link_to "Edit Account", edit_bank_account_path(bankaccount)%><br>
+<%= link_to "Remove Account", edit_bank_account_path(bankaccount), method: "DELETE"%>
 <% end %>
+<br><br><br>
+
+<%= link_to "Add a Bank Account", new_bank_account_path %><br>
+<%= link_to "My Profile Page", user_path(current_user)%><br><br><br>
+<%= link_to "Log Out", logout_path, method: 'post', id: "Log Out" %>

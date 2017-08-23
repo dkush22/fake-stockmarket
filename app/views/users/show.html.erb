@@ -6,15 +6,19 @@
 <h3><%=@user.dob.strftime("%B %d, %Y")%></h3>
 <h1>In App Money:</h1>
 <h3><%=@user.in_app_account.amount%></h3>
-<% if @user.bank_accounts.any? %>
+<%= link_to "Transfer money to your in-app-account", transfer_path(current_user.id)%>
+<br><br>
 <h1>Available Money From Bank Accounts</h1>
 <%acct = @user.bank_accounts.map do |bankaccount| %>
   <%bankaccount.total_money%>
   <%end.inject(:+)%>
   <h3><%= acct %></h3>
   <%= link_to "View all Bank Accounts", bank_accounts_path%>
-<% else %>
-<%= link_to "Add a Bank Account", new_bank_account_path %><br><p></p>
-<% end %>
+<br><br>
+<%= link_to "Add a Bank Account", new_bank_account_path %><br><br>
+<h1>Stocks:</h1>
+<%= link_to "View all stocks", stocks_path%><br><br>
+<%= link_to "Purchase a stock", new_investment_path%><br><br><br><br>
+<br><br>
 
 <%= link_to "Log Out", logout_path, method: 'post', id: "Log Out" %>

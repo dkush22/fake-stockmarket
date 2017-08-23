@@ -1,9 +1,12 @@
 <%= form_for @bankaccount do |f| %>
 <%= f.label :name %>
-<%= f.text_area :name %>
+<%= f.text_field :name %>
+<br><br>
 <%= f.label :type_of_account %>
-<%= f.text_area :type_of_account %>
+<%= f.select :type_of_account, [ 'Checking','Savings'], :prompt => 'Select One' %>
+<br><br>
 <%= f.label :total_money %>
-<%= f.text_area :total_money %>
+<%= f.text_field :total_money %>
+<br><br><br>
 <%= f.submit %>
 <% end %>

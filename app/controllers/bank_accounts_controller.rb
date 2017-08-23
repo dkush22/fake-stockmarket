@@ -18,7 +18,7 @@ def create
   @bankaccount.in_app_account_id = current_user.in_app_account.id
   if @bankaccount.valid?
     @bankaccount.save
-    redirect_to bank_account_path(@bankaccount)
+    redirect_to user_path(current_user)
   else render 'new'
   end
 end
