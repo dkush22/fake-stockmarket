@@ -9,3 +9,10 @@
 <a href="https://www.cnbc.com/quotes/?symbol=<%=@stock.ticker%>">More Info</a><br>
 
 <%= link_to "Buy this stock", new_investment_path %>
+
+<%= form_for @investment do |f| %>
+<%=f.hidden_field :stock_id, :value => @stock.id %>
+<%= f.label :quantity %>
+<%= f.text_field :quantity %>
+<%= f.submit %>
+<%end %>

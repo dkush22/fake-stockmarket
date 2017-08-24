@@ -1,0 +1,10 @@
+<% if @user.friendships.any? %>
+<%@user.friendships.map do |friendship| %>
+<h1> <%=friendship.friend.name%> <%= link_to friendship.friend.username, user_path(friendship.friend)%>
+ <%end%>
+<%else%>
+<h2> You have no friends! </h2>
+ <% end %>
+
+<p></p>
+<%=link_to "Return to Home Page", user_path(current_user)%>

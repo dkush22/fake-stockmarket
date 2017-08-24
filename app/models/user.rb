@@ -3,6 +3,12 @@ class User < ApplicationRecord
   has_many :bank_accounts
   has_many :stocks, through: :investments
   has_many  :investments
+
+  has_many :friendships
+  has_many :friends, :through => :friendships
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+
   validates :username, uniqueness: true
   # validate :enough_funds?
   has_secure_password
@@ -20,7 +26,7 @@ end
 
 
 # def enough_funds?
-#   if transfer_amount > user.bank_accounts.first.total_money 
+#   if transfer_amount > user.bank_accounts.first.total_money
 #  errors.add(:base, message: "Hello")
 # end
 # end

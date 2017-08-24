@@ -40,4 +40,25 @@
 <%= link_to "Purchase a Stock", new_investment_path%><br><br><br><br>
 <br><br>
 <% end %>
+
+<h2>Friends</h2>
+<ul>
+  <% for friendship in @user.friendships %>
+    <li>
+      <%=link_to friendship.friend.username, user_path(friendship.friend) %>
+      (<%= link_to "remove", friendship, :method => :delete %>)
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to "Find Friends", users_path %></p>
+<%=link_to "Your Friends", user_friends_path%>
+
+<h2>Friended by Users</h2>
+<ul>
+  <% for user in @user.inverse_friends %>
+    <li><%=h user.username %></li>
+  <% end %>
+</ul>
+
 <%= link_to "Log Out", logout_path, method: 'post', id: "Log Out" %>

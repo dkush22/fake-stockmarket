@@ -7,6 +7,7 @@ end
 
 def show
   @stock = Stock.find(params[:id])
+  @investment = Investment.new
 end
 
 def new
