@@ -1,0 +1,21 @@
+<% if current_user.in_app_account.amount != 0 %>
+You currently have $<%= current_user.in_app_account.amount %> in your account.<br>
+You currently have $<%= current_user.bank_accounts.first.total_money%> in your bank account.<br>
+How much would you like to send?
+<%= form_tag friendship_transfer_path do %>
+<input type="hidden" name="_method" value="patch" />
+<label>Transfer Amount: </label>
+<input type="text" id="transfer_amount" name="[transfer][amount]">
+<br>
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<input type="submit" value="Submit Post">
+<% end %>
+ <%=link_to "Return to Home Page", user_path(current_user)%>
+<% else %>
+<h3>You do not currently have any money in your in-app-account!</h3>
+<h3>Please add money before transferring to a friend.</h3>
+
+<%= link_to "Add money to your in-app-account", transfer_path %><p></p>
+<%=link_to "Return to Home Page", user_path(current_user)%>
+
+<% end %>

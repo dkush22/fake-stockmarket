@@ -41,6 +41,10 @@
 <br><br>
 <% end %>
 
+<% if session[:user_id] != @user.id %>
+  <%= link_to "Send money to #{@user.name}", friendship_transfer_path %>
+<% end %>
+
 <h2>Friends</h2>
 <ul>
   <% for friendship in @user.friendships %>
@@ -57,7 +61,7 @@
 <h2>Friended by Users</h2>
 <ul>
   <% for user in @user.inverse_friends %>
-    <li><%=h user.username %></li>
+    <li><%=link_to user.username, user_path(user) %></li>
   <% end %>
 </ul>
 

@@ -1,4 +1,3 @@
-<%= flash[:message] %>
 <% if current_user.bank_accounts.any? %>
 <%= form_tag transfer_path do %>
 <input type="hidden" name="_method" value="patch" />
