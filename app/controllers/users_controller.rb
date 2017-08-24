@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :is_authenticated?
+  skip_before_action :is_authenticated?, only: [:new, :create]
+
 
 def index
   @users = User.all
