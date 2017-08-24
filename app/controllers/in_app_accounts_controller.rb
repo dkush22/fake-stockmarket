@@ -1,5 +1,5 @@
 class InAppAccountsController < ApplicationController
-  before_action :require_logged_in
+  before_action :is_authenticated?
 
   def index
     @inappaccounts = InAppAccount.all
@@ -32,8 +32,11 @@ class InAppAccountsController < ApplicationController
     @bankaccounts = BankAccount.all
     @inappaccount = InAppAccount.find(params[:id])
     # current_user.transfer_amount(params["transfer"]["amount"].to_i)
-    current_user.move_money_to_in_app_account(params["transfer"]["amount"].to_i)
+    if current_user.move_money_to_in_app_account(params["transfer"]["amount"].to_i)
     redirect_to user_path(current_user)
+  else
+    render 'transfer'
+  end
   end
 
   def destroy

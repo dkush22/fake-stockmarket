@@ -1,7 +1,8 @@
 class BankAccountsController < ApplicationController
+  before_action :is_authenticated?
 
 def index
-  @bankaccounts = BankAccount.all
+  redirect_to user_bankaccounts_path(current_user)
 end
 
 def show

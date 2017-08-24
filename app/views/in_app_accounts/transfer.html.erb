@@ -1,3 +1,5 @@
+<%= flash[:message] %>
+<% if current_user.bank_accounts.any? %>
 <%= form_tag transfer_path do %>
 <input type="hidden" name="_method" value="patch" />
 <label>Transfer Amount: </label>
@@ -5,4 +7,10 @@
 <br>
 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 <input type="submit" value="Submit Post">
+<% end %>
+ <%=link_to "Return to Home Page", user_path(current_user)%>
+<% else %>
+<h3>You do not currently have any bank accounts linked up to your account!</h3>
+<%= link_to "Add a Bank Account", new_bank_account_path %><p></p>
+<%=link_to "Return to Home Page", user_path(current_user)%>
 <% end %>

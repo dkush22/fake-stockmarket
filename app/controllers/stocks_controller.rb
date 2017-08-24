@@ -1,5 +1,6 @@
 class StocksController < ApplicationController
-  skip_before_action :current_user, only: [:index, :show]
+before_action :is_authenticated?
+
 def index
   @stocks = Stock.all
 end
