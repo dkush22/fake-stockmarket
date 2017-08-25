@@ -1,3 +1,5 @@
+<div style="margin: 0 auto; width: 656px;", class="ui header">
+    <font color="white" size= "5">
 <% if current_user.in_app_account.amount != 0 %>
 You currently have $<%= current_user.in_app_account.amount %> in your account.<br>
 You currently have $<%= current_user.bank_accounts.first.total_money%> in your bank account.<br>
@@ -19,3 +21,5 @@ How much would you like to send?
 <%=link_to "Return to Home Page", user_path(current_user)%>
 
 <% end %>
+</font>
+</div>

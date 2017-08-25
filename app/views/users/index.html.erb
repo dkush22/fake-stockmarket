@@ -1,5 +1,9 @@
+<div style="margin: 0 auto; width: 656px;", class="ui header">
+    <font color="white" size= "5">
 <h3>Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Username:</h3>
 <% @users.each_with_index do |user, idx|%>
 <h3><%="#{idx + 1}. #{user.name}"%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=user.username%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Visit User Profile", user_path(user)%></h3>
 <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
 <% end %>
+</font>
+</div>

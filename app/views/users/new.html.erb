@@ -1,11 +1,15 @@
+<div style="margin: 0 auto; width: 656px;", class="ui header">
+    <font color="white" size= "5">
 <%= form_for @user do |f| %>
-<%= f.label :name %>
-<%= f.text_area :name %>
-<%= f.label :username %>
-<%= f.text_area :username %>
-<%= f.label :password %>
-<%= f.text_area :password %>
-<%= f.label :dob %>
-<%= f.date_field :dob %>
-<%= f.submit %>
+<font color="white" size= "5"><%= f.label :name %>:
+<%= f.text_field :name %><br><br>
+<%= f.label :username %>:
+<%= f.text_field :username %><br><br>
+<%= f.label :password %>:
+<%= f.text_field :password %><br><br>
+<%= f.label :dob %>:
+<%= f.date_field :dob %><br><br>
+<%= f.submit%> </font><br><br>
 <% end %>
+</font>
+</div>

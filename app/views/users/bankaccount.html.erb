@@ -1,3 +1,5 @@
+<div style="margin: 0 auto; width: 656px;", class="ui header">
+    <font color="white" size= "5">
 <% if session[:user_id] == @user.id %>
 <%@user.bank_accounts.map do |bankaccount| %>
 <h1><%=bankaccount.name%>
@@ -10,3 +12,5 @@ $<%=bankaccount.total_money%>.00<br></h1>
  <h3> You can not view another user's Bank Account Information </h3><p></p>
  <%=link_to "Return to Home Page", user_path(current_user)%>
  <% end %>
+ </font>
+ </div>

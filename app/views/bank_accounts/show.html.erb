@@ -1,3 +1,5 @@
+<div style="margin: 0 auto; width: 656px;", class="ui header">
+    <font color="white" size= "5">
 <h3>Name: <%=@bankaccount.name%></h3>
 <p>Account Type: <%= @bankaccount.type_of_account %></p>
 <p>Total Money in Account: $<%= @bankaccount.total_money %></p><br>
@@ -5,3 +7,5 @@
 <%= link_to "Remove Account", edit_bank_account_path(@bankaccount), method: "DELETE"%><br>
 <%= link_to "My Profile Page", user_path(current_user)%><br>
 <%= link_to "Log Out", logout_path, method: 'post', id: "Log Out" %>
+</font>
+</div>
