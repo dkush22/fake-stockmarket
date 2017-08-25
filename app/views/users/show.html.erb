@@ -1,18 +1,28 @@
 <div style="margin: 0 auto; width: 656px;", class="ui header">
   <font color="white" size= "5">
-<h1>Name:</h1>
+    <div class="ui secondary  menu">
+  <a class="item" href="../stocks">
+    Stocks
+  </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a class="item" href="../users">
+    Friends
+  </a>
+  <div class="right menu">
+  </div>
+
+<h2>Name:</h2>
 <h3><%=@user.name%></h3>
-<h1>Username:</h1>
+<h2>Username:</h2>
 <h3><%=@user.username%></h3>
 <% if session[:user_id] == @user.id  %>
-<h1>Date of Birth:</h1>
+<h2>Date of Birth:</h2>
 <h3><%=@user.dob.strftime("%B %d, %Y")%></h3>
-<h1>In App Money:</h1>
-<h3>$<%=@user.in_app_account.amount%></h3>
+<h2>In App Money:</h2>
+<h3>$<%=@user.in_app_account.amount%></h3><br>
 <%= link_to "Transfer money to your in-app-account", transfer_path(current_user.id)%>
 <br><br>
 <% if @user.bank_accounts.any? %>
-<h1>Available Money From Bank Accounts</h1>
+<h2>Available Money From Bank Accounts</h2>
 <%acct = @user.bank_accounts.map do |bankaccount| %>
   <%bankaccount.total_money%>
   <%end.inject(:+)%>
@@ -21,25 +31,25 @@
 <br><br>
 <%= link_to "Add a Bank Account", new_bank_account_path %><br><br>
 <% else %>
-<h1>No Current Bank Accounts Linked to App</h1>
+<h2>No Current Bank Accounts Linked to App</h2>
 <%= link_to "Add a Bank Account", new_bank_account_path %><br><br>
 <% end %>
 <% if @user.investments.any? %>
-<h1>Total Stock Invesments:</h1>
+<h2>Total Stock Invesments:</h2>
 <%stock = @user.investments.map do |investment| %>
   <%investment.quantity * investment.stock.stock_price%>
   <%end.inject(:+)%>
   <h3>$<%=stock%></h3>
   <% else %>
-  <h1>Total Stock Invesments:</h1>
+  <h2>Total Stock Invesments:</h2>
 <%stock = @user.investments.map do |investment| %>
   <%investment.quantity * investment.stock.stock_price%>
   <%end.inject(:+)%>
   <h3>$0<%=stock%></h3>
-  <% end %>
-<%= link_to "View Your Stock Purchases", user_investment_path%><br><br>
-<%= link_to "View All Stocks", stocks_path%><br><br>
-<%= link_to "Purchase a Stock", new_investment_path%><br><br><br><br>
+  <% end %><br>
+<%= link_to "View Your Stock Purchases", user_investment_path%><br>
+<%= link_to "View All Stocks", stocks_path%><br>
+<%= link_to "Purchase a Stock", new_investment_path%><br>
 <br><br>
 <% end %>
 
@@ -71,4 +81,5 @@
 <%= link_to "Edit your Profile", edit_user_path(current_user) %> <br><br>
 <%= link_to "Log Out", logout_path, method: 'post', id: "Log Out" %>
 </font>
+</div>
 </div>

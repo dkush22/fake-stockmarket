@@ -1,9 +1,13 @@
-<div style="margin: 0 auto; width: 656px;", class="ui header">
+<div style="margin: 0 auto; width: 1000px;", class="ui header">
+
     <font color="white" size= "5">
-<h3>Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Username:</h3>
+        <h1>Users: </h1>
 <% @users.each_with_index do |user, idx|%>
-<h3><%="#{idx + 1}. #{user.name}"%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=user.username%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Visit User Profile", user_path(user)%></h3>
-<%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+<h4><ul><%="#{idx + 1}. #{user.name}"%> || ||  (<%=user.username%>) || ||  <%= link_to "Visit User Profile", user_path(user)%> || ||
+<%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %></ul></h4>
 <% end %>
+<br><br>
+<%= link_to "Your Profile Page", user_path(current_user) %> <br><br>
+<%= link_to "Log Out", logout_path, method: 'post', id: "Log Out" %>
 </font>
 </div>
